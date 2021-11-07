@@ -12,6 +12,7 @@ class StaticPagesURLTests(TestCase):
         response = self.guest_client.get('/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
+    def test_about_url_exists_at_desired_location2(self):
         response = self.guest_client.get('/second_page/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
@@ -19,6 +20,7 @@ class StaticPagesURLTests(TestCase):
         """Проверка контекста страниц."""
         response = self.guest_client.get('/')
         self.assertContains(response, 'У меня получилось!')
-
+    
+    def test_page_shows_correct_context2(self):
         response = self.guest_client.get('/second_page/')
         self.assertContains(response, 'А это вторая страница!')
